@@ -62,13 +62,14 @@ function useScrollReveal() {
   return { ref, visible };
 }
 
-function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
+function Reveal({ children, delay = 0, className = "", style = {} }: { children: React.ReactNode; delay?: number; className?: string; style?: React.CSSProperties }) {
   const { ref, visible } = useScrollReveal();
   return (
     <div ref={ref} className={className} style={{
       opacity: visible ? 1 : 0,
       transform: visible ? "translateY(0)" : "translateY(24px)",
       transition: `opacity 0.7s ease ${delay}ms, transform 0.7s ease ${delay}ms`,
+      ...style,
     }}>
       {children}
     </div>
@@ -234,9 +235,11 @@ function Hero() {
             marginBottom: "1.5rem",
             textShadow: "0 2px 24px rgba(0,0,0,0.4)",
           }}>
-            Galash
+            <span style={{ color: WHITE }}>Galash Capital</span>
             <br />
-            <span style={{ fontStyle: "italic", color: GOLD }}>Capital</span>
+            <span style={{ fontStyle: "italic", color: GOLD }}>Industrial Real Estate</span>
+            <br />
+            <span style={{ color: WHITE }}>Investments</span>
           </h1>
 
           {/* Gold rule */}
@@ -316,8 +319,7 @@ function About() {
               marginBottom: "1.5rem",
             }}>
               Data-Driven{" "}
-              <span style={{ fontStyle: "italic", color: GOLD }}>Industrial Real Estate</span>{" "}
-              Investing
+              <span style={{ fontStyle: "italic", color: GOLD }}>Investing</span>
             </h2>
             <p style={{
               fontFamily: "'Source Sans 3', sans-serif",
@@ -329,7 +331,7 @@ function About() {
             }}>
               Galash Capital uses proprietary algorithms and technology to analyze
               markets, identify opportunities, and execute disciplined investments
-              in small-bay industrial properties. Our data-driven approach allows
+              in industrial properties. Our data-driven approach allows
               us to move with conviction in fragmented markets where institutional
               capital has historically been absent.
             </p>
@@ -475,8 +477,8 @@ function Capabilities() {
       body: "Disciplined sourcing and underwriting of small-bay industrial assets in high-demand locations. We evaluate deals across Florida and the broader Sun Belt with speed and conviction.",
     },
     {
-      // Hard-hat / construction crane icon
-      icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M2 20h20" /><path d="M6 20V10l6-6 6 6v10" /><path d="M9 20v-6h6v6" /><path d="M12 4v3" /><path d="M4 10h16" /></svg>,
+      // Tower crane icon — distinct from the house/acquisitions icon
+      icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="12" y1="2" x2="12" y2="22" /><line x1="12" y1="4" x2="22" y2="8" /><line x1="12" y1="4" x2="4" y2="7" /><line x1="22" y1="8" x2="22" y2="14" /><rect x="19" y="14" width="6" height="4" rx="0.5" /><line x1="12" y1="6" x2="18" y2="8.5" /><line x1="12" y1="22" x2="8" y2="22" /><line x1="12" y1="22" x2="16" y2="22" /></svg>,
       title: "Development",
       body: "Selectively pursuing ground-up development opportunities where land cost, zoning, and market fundamentals support new construction of industrial product. We underwrite development with the same discipline applied to acquisitions.",
     },
@@ -608,11 +610,11 @@ function Team() {
           </h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6" style={{ alignItems: "stretch" }}>
           {members.map((m, i) => (
-            <Reveal key={i} delay={i * 80}>
+            <Reveal key={i} delay={i * 80} style={{ height: "100%" }}>
               <div
-                style={{ background: NAVY_CARD, border: `1px solid rgba(255,255,255,0.07)`, padding: "2.5rem", display: "flex", gap: "1.5rem", alignItems: "flex-start", transition: "border-color 0.3s, background 0.3s" }}
+                style={{ background: NAVY_CARD, border: `1px solid rgba(255,255,255,0.07)`, padding: "2.5rem", display: "flex", gap: "1.5rem", alignItems: "flex-start", transition: "border-color 0.3s, background 0.3s", height: "100%", boxSizing: "border-box" }}
                 onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.borderColor = `${GOLD}55`; el.style.background = NAVY_MID; }}
                 onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "rgba(255,255,255,0.07)"; el.style.background = NAVY_CARD; }}
               >
@@ -827,12 +829,12 @@ function Footer() {
               src={LOGO_WHITE}
               alt="Galash Capital"
               style={{
-                height: 72,
-                width: "auto",
-                display: "block",
-              }}
-            />
-          </a>
+              height: 90,
+              width: "auto",
+              display: "block",
+            }}
+          />
+        </a>
 
           {/* CENTER: Nav links */}
           <div className="flex flex-wrap justify-center gap-8">
