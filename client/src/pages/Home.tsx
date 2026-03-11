@@ -17,9 +17,9 @@ import { useEffect, useRef, useState } from "react";
 // Dark navy logo — used on white/light nav background
 const LOGO_NAVY =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_logo_navy_23216c75.png";
-// White logo — used in dark footer (inverted via CSS filter)
+// Navy-background logo with white text — used directly in dark footer (no filter needed)
 const LOGO_WHITE =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_logo_navy_23216c75.png";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_logo_navy_bg_dd8ddf4d.png";
 
 // Team photos
 const PHOTO_JOSEPH = "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/team_joseph_d39d689f.png";
@@ -236,9 +236,7 @@ function Hero() {
           }}>
             Galash
             <br />
-            <span style={{ fontStyle: "italic", color: GOLD }}>Industrial</span>
-            <br />
-            Investments
+            <span style={{ fontStyle: "italic", color: GOLD }}>Capital</span>
           </h1>
 
           {/* Gold rule */}
@@ -819,21 +817,19 @@ function ContactDetail({ label, value, href }: { label: string; value: string; h
 function Footer() {
   return (
     <footer style={{ background: NAVY, borderTop: `1px solid rgba(255,255,255,0.08)` }}>
-      {/* Upper footer — logo + nav + address */}
-      <div className="container" style={{ padding: "3.5rem 0 2.5rem" }}>
-        <div className="flex flex-col md:flex-row items-start justify-between gap-10">
+      {/* Upper footer — logo + nav + LinkedIn */}
+      <div className="container" style={{ padding: "3rem 0 2.5rem" }}>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
 
-          {/* LEFT: White logo */}
+          {/* LEFT: Navy-bg logo — renders directly on dark footer, no filter needed */}
           <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
             <img
-              src={LOGO_NAVY}
+              src={LOGO_WHITE}
               alt="Galash Capital"
               style={{
-                height: 56,
+                height: 72,
                 width: "auto",
                 display: "block",
-                filter: "brightness(0) invert(1)",
-                opacity: 0.92,
               }}
             />
           </a>
@@ -853,29 +849,22 @@ function Footer() {
             ))}
           </div>
 
-          {/* RIGHT: Address + LinkedIn */}
-          <div style={{ flexShrink: 0, textAlign: "right" }}>
-            <div style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: 300, fontSize: "0.82rem", color: GREY_LIGHT, lineHeight: 1.7, marginBottom: "0.85rem" }}>
-              3121 W. Hallandale Beach Blvd #103<br />
-              Hallandale, FL 33009
-            </div>
-            {/* LinkedIn icon linking to Marcos */}
-            <a
-              href="https://www.linkedin.com/in/marcosgalante/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", color: GREY_MID, textDecoration: "none", transition: "color 0.2s" }}
-              onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.color = GOLD; }}
-              onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.color = GREY_MID; }}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect x="2" y="9" width="4" height="12" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
-              <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.6rem", letterSpacing: "0.12em", textTransform: "uppercase" }}>LinkedIn</span>
-            </a>
-          </div>
+          {/* RIGHT: LinkedIn only */}
+          <a
+            href="https://www.linkedin.com/in/marcosgalante/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", color: GREY_MID, textDecoration: "none", transition: "color 0.2s", flexShrink: 0 }}
+            onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.color = GOLD; }}
+            onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.color = GREY_MID; }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+            <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase" }}>LinkedIn</span>
+          </a>
         </div>
       </div>
 
