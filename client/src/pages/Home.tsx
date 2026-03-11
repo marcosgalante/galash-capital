@@ -1,19 +1,29 @@
 /*
  * GALASH CAPITAL — Home Page
  * Design: Modern Industrial Precision
- * Dark navy (#0F1C2E) + warm gold (#C9973B)
+ * Brand navy: #1A2B4A (oklch ~0.24 0.07 250) + brand gold: #C9973B (oklch ~0.68 0.12 65)
  * Sections: Nav → Hero → About → Why Small-Bay → Capabilities → Team → Contact → Footer
  */
 
 import { useEffect, useRef, useState } from "react";
 
 // ─── Image Assets ────────────────────────────────────────────────────────────
+const LOGO_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_logo_7d1d264e.png";
 const HERO_IMG =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_hero_aerial-NVsCuaraMQKfcoYLND5rcR.webp";
 const WAREHOUSE_IMG =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_warehouse_interior-2eTduYmGNVTRpbeM2E9HMv.webp";
 const SKYLINE_IMG =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_skyline_industrial-NgisGRVGqJ8YCVUWNnM6Ww.webp";
+
+// Brand color tokens (matching logo: dark navy + gold)
+const NAVY = "oklch(0.22 0.07 252)";
+const NAVY_DARK = "oklch(0.17 0.07 252)";
+const NAVY_MID = "oklch(0.26 0.06 252)";
+const NAVY_LIGHT = "oklch(0.30 0.055 252)";
+const GOLD = "oklch(0.68 0.12 65)";
+const GOLD_HOVER = "oklch(0.76 0.10 65)";
 
 // ─── Scroll Animation Hook ────────────────────────────────────────────────────
 function useScrollReveal() {
@@ -88,42 +98,24 @@ function Nav() {
     <nav
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
       style={{
-        background: scrolled
-          ? "oklch(0.18 0.04 245 / 0.97)"
-          : "transparent",
+        background: scrolled ? `${NAVY_DARK}f7` : "transparent",
         backdropFilter: scrolled ? "blur(12px)" : "none",
         borderBottom: scrolled ? "1px solid oklch(1 0 0 / 8%)" : "none",
       }}
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3 group" style={{ textDecoration: 'none' }}>
-          <GalashLogo />
-          <div className="hidden sm:block" style={{ lineHeight: 1.2 }}>
-            <div
-              style={{
-                fontFamily: "'Montserrat', sans-serif",
-                fontWeight: 700,
-                fontSize: "1rem",
-                letterSpacing: "0.18em",
-                color: "oklch(0.95 0.005 75)",
-              }}
-            >
-              GALASH
-            </div>
-            <div
-              style={{
-                fontFamily: "'Montserrat', sans-serif",
-                fontWeight: 300,
-                fontSize: "0.58rem",
-                letterSpacing: "0.22em",
-                color: "oklch(0.68 0.12 65)",
-                textTransform: "uppercase",
-              }}
-            >
-              CAPITAL
-            </div>
-          </div>
+        <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
+          <img
+            src={LOGO_IMG}
+            alt="Galash Capital"
+            style={{
+              height: 44,
+              width: "auto",
+              filter: "brightness(0) invert(1)",
+              opacity: 0.95,
+            }}
+          />
         </a>
 
         {/* Desktop Links */}
@@ -143,7 +135,7 @@ function Nav() {
                 transition: "color 0.2s",
               }}
               onMouseEnter={(e) =>
-                ((e.target as HTMLElement).style.color = "oklch(0.68 0.12 65)")
+                ((e.target as HTMLElement).style.color = GOLD)
               }
               onMouseLeave={(e) =>
                 ((e.target as HTMLElement).style.color = "oklch(0.75 0.01 75)")
@@ -160,22 +152,20 @@ function Nav() {
               fontSize: "0.65rem",
               letterSpacing: "0.15em",
               textTransform: "uppercase",
-              color: "oklch(0.18 0.04 245)",
-              background: "oklch(0.68 0.12 65)",
+              color: NAVY_DARK,
+              background: GOLD,
               padding: "0.5rem 1.25rem",
               textDecoration: "none",
               transition: "background 0.2s",
             }}
             onMouseEnter={(e) =>
-              ((e.target as HTMLElement).style.background =
-                "oklch(0.78 0.10 65)")
+              ((e.target as HTMLElement).style.background = GOLD_HOVER)
             }
             onMouseLeave={(e) =>
-              ((e.target as HTMLElement).style.background =
-                "oklch(0.68 0.12 65)")
+              ((e.target as HTMLElement).style.background = GOLD)
             }
           >
-            Submit a Deal
+            Get In Touch
           </a>
         </div>
 
@@ -183,7 +173,7 @@ function Nav() {
         <button
           className="md:hidden p-2"
           onClick={() => setMenuOpen(!menuOpen)}
-          style={{ color: "oklch(0.95 0.005 75)" }}
+          style={{ color: "oklch(0.95 0.005 75)", background: "none", border: "none" }}
         >
           <div
             style={{
@@ -221,7 +211,7 @@ function Nav() {
       {menuOpen && (
         <div
           style={{
-            background: "oklch(0.18 0.04 245 / 0.98)",
+            background: `${NAVY_DARK}fa`,
             borderTop: "1px solid oklch(1 0 0 / 10%)",
             padding: "1.5rem",
           }}
@@ -258,54 +248,18 @@ function Nav() {
               fontSize: "0.65rem",
               letterSpacing: "0.15em",
               textTransform: "uppercase",
-              color: "oklch(0.18 0.04 245)",
-              background: "oklch(0.68 0.12 65)",
+              color: NAVY_DARK,
+              background: GOLD,
               padding: "0.75rem 1.25rem",
               textDecoration: "none",
               textAlign: "center",
             }}
           >
-            Submit a Deal
+            Get In Touch
           </a>
         </div>
       )}
     </nav>
-  );
-}
-
-// ─── Galash Logo SVG ──────────────────────────────────────────────────────────
-function GalashLogo({ size = 40 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 100 100"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* Outer square */}
-      <rect
-        x="4"
-        y="4"
-        width="92"
-        height="92"
-        stroke="oklch(0.68 0.12 65)"
-        strokeWidth="3"
-        fill="none"
-      />
-      {/* G letterform */}
-      <text
-        x="50"
-        y="68"
-        textAnchor="middle"
-        fontFamily="Cormorant Garamond, serif"
-        fontWeight="600"
-        fontSize="62"
-        fill="oklch(0.68 0.12 65)"
-      >
-        G
-      </text>
-    </svg>
   );
 }
 
@@ -339,8 +293,7 @@ function Hero() {
       <div
         className="absolute inset-0"
         style={{
-          background:
-            "linear-gradient(to bottom, oklch(0.18 0.04 245 / 0.65) 0%, oklch(0.18 0.04 245 / 0.55) 50%, oklch(0.18 0.04 245 / 0.85) 100%)",
+          background: `linear-gradient(to bottom, ${NAVY_DARK}b0 0%, ${NAVY_DARK}90 50%, ${NAVY_DARK}e0 100%)`,
         }}
       />
 
@@ -358,7 +311,7 @@ function Hero() {
         >
           {/* Label */}
           <div className="section-label mb-6">
-            South Florida · Industrial Real Estate
+            Industrial Real Estate Investment
           </div>
 
           {/* Main headline */}
@@ -375,12 +328,7 @@ function Hero() {
           >
             Galash
             <br />
-            <span
-              style={{
-                fontStyle: "italic",
-                color: "oklch(0.68 0.12 65)",
-              }}
-            >
+            <span style={{ fontStyle: "italic", color: GOLD }}>
               Small-Bay Industrial
             </span>
             <br />
@@ -403,66 +351,36 @@ function Hero() {
             }}
           >
             Disciplined acquisition and active management of multi-tenant industrial
-            properties across South Florida and the Southeast United States.
+            properties across Florida and Sun Belt States.
           </p>
 
-          {/* CTAs */}
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="#contact"
-              style={{
-                fontFamily: "'Montserrat', sans-serif",
-                fontWeight: 600,
-                fontSize: "0.65rem",
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "oklch(0.18 0.04 245)",
-                background: "oklch(0.68 0.12 65)",
-                padding: "0.85rem 2rem",
-                textDecoration: "none",
-                display: "inline-block",
-                transition: "background 0.2s",
-              }}
-              onMouseEnter={(e) =>
-                ((e.target as HTMLElement).style.background =
-                  "oklch(0.78 0.10 65)")
-              }
-              onMouseLeave={(e) =>
-                ((e.target as HTMLElement).style.background =
-                  "oklch(0.68 0.12 65)")
-              }
-            >
-              Submit a Deal
-            </a>
-            <a
-              href="#about"
-              style={{
-                fontFamily: "'Montserrat', sans-serif",
-                fontWeight: 500,
-                fontSize: "0.65rem",
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "oklch(0.95 0.005 75)",
-                border: "1px solid oklch(1 0 0 / 30%)",
-                padding: "0.85rem 2rem",
-                textDecoration: "none",
-                display: "inline-block",
-                transition: "border-color 0.2s, color 0.2s",
-              }}
-              onMouseEnter={(e) => {
-                (e.target as HTMLElement).style.borderColor =
-                  "oklch(0.68 0.12 65)";
-                (e.target as HTMLElement).style.color = "oklch(0.68 0.12 65)";
-              }}
-              onMouseLeave={(e) => {
-                (e.target as HTMLElement).style.borderColor =
-                  "oklch(1 0 0 / 30%)";
-                (e.target as HTMLElement).style.color = "oklch(0.95 0.005 75)";
-              }}
-            >
-              Learn More
-            </a>
-          </div>
+          {/* Single CTA — Learn More only */}
+          <a
+            href="#about"
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 500,
+              fontSize: "0.65rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "oklch(0.95 0.005 75)",
+              border: "1px solid oklch(1 0 0 / 35%)",
+              padding: "0.85rem 2rem",
+              textDecoration: "none",
+              display: "inline-block",
+              transition: "border-color 0.2s, color 0.2s",
+            }}
+            onMouseEnter={(e) => {
+              (e.target as HTMLElement).style.borderColor = GOLD;
+              (e.target as HTMLElement).style.color = GOLD;
+            }}
+            onMouseLeave={(e) => {
+              (e.target as HTMLElement).style.borderColor = "oklch(1 0 0 / 35%)";
+              (e.target as HTMLElement).style.color = "oklch(0.95 0.005 75)";
+            }}
+          >
+            Learn More
+          </a>
         </div>
       </div>
 
@@ -479,73 +397,10 @@ function Hero() {
           style={{
             width: 1,
             height: 48,
-            background:
-              "linear-gradient(to bottom, oklch(0.68 0.12 65), transparent)",
+            background: `linear-gradient(to bottom, ${GOLD}, transparent)`,
             margin: "0 auto",
           }}
         />
-      </div>
-    </section>
-  );
-}
-
-// ─── Stats Bar ────────────────────────────────────────────────────────────────
-function StatsBar() {
-  const stats = [
-    { value: "$50M+", label: "Equity Available" },
-    { value: "$150M", label: "Target Asset Value" },
-    { value: "24–36", label: "Month Deployment" },
-    { value: "FL · TX · GA · NC · SC", label: "Target Markets" },
-  ];
-
-  return (
-    <section
-      style={{
-        background: "oklch(0.68 0.12 65)",
-        padding: "2rem 0",
-      }}
-    >
-      <div className="container">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0">
-          {stats.map((stat, i) => (
-            <div
-              key={i}
-              className="text-center md:text-left"
-              style={{
-                borderRight:
-                  i < stats.length - 1
-                    ? "1px solid oklch(0.18 0.04 245 / 0.2)"
-                    : "none",
-                padding: "0.25rem 1.5rem",
-              }}
-            >
-              <div
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontWeight: 600,
-                  fontSize: "1.75rem",
-                  color: "oklch(0.18 0.04 245)",
-                  lineHeight: 1.1,
-                }}
-              >
-                {stat.value}
-              </div>
-              <div
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  fontWeight: 500,
-                  fontSize: "0.6rem",
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: "oklch(0.25 0.04 245)",
-                  marginTop: "0.25rem",
-                }}
-              >
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );
@@ -557,7 +412,7 @@ function About() {
     <section
       id="about"
       style={{
-        background: "oklch(0.22 0.04 245)",
+        background: NAVY_MID,
         padding: "7rem 0",
       }}
     >
@@ -578,7 +433,7 @@ function About() {
               }}
             >
               Technology-Driven{" "}
-              <span style={{ fontStyle: "italic", color: "oklch(0.68 0.12 65)" }}>
+              <span style={{ fontStyle: "italic", color: GOLD }}>
                 Industrial Real Estate
               </span>{" "}
               Investing
@@ -640,7 +495,7 @@ function About() {
                   right: "-12px",
                   width: "60%",
                   height: "60%",
-                  border: "2px solid oklch(0.68 0.12 65)",
+                  border: `2px solid ${GOLD}`,
                   pointerEvents: "none",
                 }}
               />
@@ -656,32 +511,26 @@ function About() {
 function WhySmallBay() {
   const reasons = [
     {
-      number: "01",
       title: "Strong Tenant Demand",
       body: "Small businesses, logistics operators, and service providers rely on flexible industrial space close to population centers — creating durable, diversified demand.",
     },
     {
-      number: "02",
       title: "Fragmented Ownership",
       body: "The sector remains largely owned by small local landlords, creating acquisition opportunities for disciplined investors with institutional underwriting capabilities.",
     },
     {
-      number: "03",
       title: "Limited New Supply",
       body: "Zoning constraints and rising land costs restrict the development of new small-bay properties, protecting existing assets from competitive oversupply.",
     },
     {
-      number: "04",
       title: "Resilient Asset Class",
       body: "Diverse tenant bases and shorter lease terms allow rents to adjust more quickly to market conditions, providing natural inflation protection.",
     },
     {
-      number: "05",
       title: "Operational Upside",
       body: "Active management and strategic improvements — from lease-up to capital improvements — can unlock meaningful additional value over the hold period.",
     },
     {
-      number: "06",
       title: "Mission-Critical Space",
       body: "Small-bay tenants depend on their space to run their businesses. This operational necessity translates to strong retention and predictable cash flows.",
     },
@@ -691,7 +540,7 @@ function WhySmallBay() {
     <section
       id="strategy"
       style={{
-        background: "oklch(0.18 0.04 245)",
+        background: NAVY,
         padding: "7rem 0",
         position: "relative",
         overflow: "hidden",
@@ -725,7 +574,7 @@ function WhySmallBay() {
             }}
           >
             Why{" "}
-            <span style={{ fontStyle: "italic", color: "oklch(0.68 0.12 65)" }}>
+            <span style={{ fontStyle: "italic", color: GOLD }}>
               Small-Bay Industrial
             </span>
           </h2>
@@ -750,33 +599,33 @@ function WhySmallBay() {
             <Reveal key={i} delay={i * 60}>
               <div
                 style={{
-                  background: "oklch(0.22 0.04 245)",
+                  background: NAVY_MID,
                   padding: "2.5rem",
                   height: "100%",
                   transition: "background 0.3s",
                   cursor: "default",
+                  borderTop: `2px solid transparent`,
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.background =
-                    "oklch(0.26 0.035 245)";
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.background = NAVY_LIGHT;
+                  el.style.borderTopColor = GOLD;
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background =
-                    "oklch(0.22 0.04 245)";
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.background = NAVY_MID;
+                  el.style.borderTopColor = "transparent";
                 }}
               >
                 <div
                   style={{
-                    fontFamily: "'Cormorant Garamond', serif",
-                    fontWeight: 300,
-                    fontSize: "2.5rem",
-                    color: "oklch(0.68 0.12 65 / 0.35)",
-                    lineHeight: 1,
-                    marginBottom: "1rem",
+                    width: 32,
+                    height: 2,
+                    background: GOLD,
+                    marginBottom: "1.25rem",
+                    opacity: 0.5,
                   }}
-                >
-                  {r.number}
-                </div>
+                />
                 <h3
                   style={{
                     fontFamily: "'Montserrat', sans-serif",
@@ -821,7 +670,7 @@ function Capabilities() {
         </svg>
       ),
       title: "Acquisitions",
-      body: "Disciplined sourcing and underwriting of small-bay industrial assets in high-demand locations. We evaluate deals across South Florida and the broader Southeast with speed and conviction.",
+      body: "Disciplined sourcing and underwriting of small-bay industrial assets in high-demand locations. We evaluate deals across Florida and the broader Sun Belt with speed and conviction.",
     },
     {
       icon: (
@@ -860,7 +709,7 @@ function Capabilities() {
     <section
       id="capabilities"
       style={{
-        background: "oklch(0.22 0.04 245)",
+        background: NAVY_MID,
         padding: "7rem 0",
       }}
     >
@@ -880,7 +729,7 @@ function Capabilities() {
             }}
           >
             Integrated{" "}
-            <span style={{ fontStyle: "italic", color: "oklch(0.68 0.12 65)" }}>
+            <span style={{ fontStyle: "italic", color: GOLD }}>
               Capabilities
             </span>
           </h2>
@@ -891,7 +740,7 @@ function Capabilities() {
             <Reveal key={i} delay={i * 80}>
               <div
                 style={{
-                  background: "oklch(0.26 0.035 245)",
+                  background: NAVY_LIGHT,
                   padding: "3rem",
                   display: "flex",
                   gap: "1.5rem",
@@ -901,16 +750,15 @@ function Capabilities() {
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLElement).style.background =
-                    "oklch(0.30 0.035 245)";
+                    "oklch(0.34 0.05 252)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background =
-                    "oklch(0.26 0.035 245)";
+                  (e.currentTarget as HTMLElement).style.background = NAVY_LIGHT;
                 }}
               >
                 <div
                   style={{
-                    color: "oklch(0.68 0.12 65)",
+                    color: GOLD,
                     flexShrink: 0,
                     marginTop: "0.2rem",
                   }}
@@ -989,7 +837,7 @@ function Team() {
     <section
       id="team"
       style={{
-        background: "oklch(0.18 0.04 245)",
+        background: NAVY,
         padding: "7rem 0",
       }}
     >
@@ -1008,7 +856,7 @@ function Team() {
             }}
           >
             The{" "}
-            <span style={{ fontStyle: "italic", color: "oklch(0.68 0.12 65)" }}>
+            <span style={{ fontStyle: "italic", color: GOLD }}>
               Team
             </span>
           </h2>
@@ -1019,7 +867,7 @@ function Team() {
             <Reveal key={i} delay={i * 80}>
               <div
                 style={{
-                  background: "oklch(0.22 0.04 245)",
+                  background: NAVY_MID,
                   padding: "2.5rem",
                   display: "flex",
                   gap: "1.5rem",
@@ -1027,12 +875,10 @@ function Team() {
                   transition: "background 0.3s",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.background =
-                    "oklch(0.26 0.035 245)";
+                  (e.currentTarget as HTMLElement).style.background = NAVY_LIGHT;
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background =
-                    "oklch(0.22 0.04 245)";
+                  (e.currentTarget as HTMLElement).style.background = NAVY_MID;
                 }}
               >
                 {/* Avatar */}
@@ -1040,8 +886,8 @@ function Team() {
                   style={{
                     width: 56,
                     height: 56,
-                    background: "oklch(0.68 0.12 65 / 0.15)",
-                    border: "1px solid oklch(0.68 0.12 65 / 0.4)",
+                    background: `${GOLD}26`,
+                    border: `1px solid ${GOLD}66`,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -1053,7 +899,7 @@ function Team() {
                       fontFamily: "'Cormorant Garamond', serif",
                       fontWeight: 600,
                       fontSize: "1.1rem",
-                      color: "oklch(0.68 0.12 65)",
+                      color: GOLD,
                     }}
                   >
                     {m.initials}
@@ -1081,7 +927,7 @@ function Team() {
                           fontSize: "0.6rem",
                           letterSpacing: "0.15em",
                           textTransform: "uppercase",
-                          color: "oklch(0.68 0.12 65)",
+                          color: GOLD,
                           marginTop: "0.2rem",
                           marginBottom: "0.75rem",
                         }}
@@ -1099,8 +945,7 @@ function Team() {
                         flexShrink: 0,
                       }}
                       onMouseEnter={(e) =>
-                        ((e.target as HTMLElement).style.color =
-                          "oklch(0.68 0.12 65)")
+                        ((e.target as HTMLElement).style.color = GOLD)
                       }
                       onMouseLeave={(e) =>
                         ((e.target as HTMLElement).style.color =
@@ -1153,15 +998,14 @@ function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Build mailto link
-    const mailtoLink = `mailto:marcos@galashcapital.com?subject=${encodeURIComponent(form.subject || "Deal Submission")}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)}`;
+    const mailtoLink = `mailto:marcos@galashcapital.com?subject=${encodeURIComponent(form.subject || "Inquiry — Galash Capital")}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)}`;
     window.location.href = mailtoLink;
     setSubmitted(true);
   };
 
   const inputStyle: React.CSSProperties = {
     width: "100%",
-    background: "oklch(0.26 0.035 245)",
+    background: NAVY_LIGHT,
     border: "1px solid oklch(1 0 0 / 10%)",
     color: "oklch(0.95 0.005 75)",
     padding: "0.85rem 1rem",
@@ -1176,7 +1020,7 @@ function Contact() {
     <section
       id="contact"
       style={{
-        background: "oklch(0.22 0.04 245)",
+        background: NAVY_MID,
         padding: "7rem 0",
       }}
     >
@@ -1196,9 +1040,9 @@ function Contact() {
                 marginBottom: "1.5rem",
               }}
             >
-              Submit a{" "}
-              <span style={{ fontStyle: "italic", color: "oklch(0.68 0.12 65)" }}>
-                Deal
+              Let's{" "}
+              <span style={{ fontStyle: "italic", color: GOLD }}>
+                Connect
               </span>
             </h2>
             <p
@@ -1211,9 +1055,8 @@ function Contact() {
                 marginBottom: "3rem",
               }}
             >
-              We review every submission and respond promptly. Whether you're a
-              broker, owner, or intermediary, we welcome the opportunity to evaluate
-              your deal.
+              We welcome inquiries from brokers, owners, and partners. Reach out
+              and we'll respond promptly.
             </p>
 
             {/* Contact details */}
@@ -1224,13 +1067,13 @@ function Contact() {
                 href="mailto:marcos@galashcapital.com"
               />
               <ContactDetail
-                label="Miami"
+                label="Phone"
                 value="+1 (754) 777-7959"
                 href="tel:+17547777959"
               />
               <ContactDetail
-                label="Mexico City"
-                value="Bosque de Ciruelos 160, Mexico City, MX 11700"
+                label="Address"
+                value="3121 W. Hallandale Beach Blvd #103, Hallandale, FL 33009"
               />
             </div>
           </Reveal>
@@ -1240,7 +1083,7 @@ function Contact() {
             {submitted ? (
               <div
                 style={{
-                  background: "oklch(0.26 0.035 245)",
+                  background: NAVY_LIGHT,
                   padding: "3rem",
                   textAlign: "center",
                   display: "flex",
@@ -1254,7 +1097,7 @@ function Contact() {
                   style={{
                     width: 56,
                     height: 56,
-                    border: "2px solid oklch(0.68 0.12 65)",
+                    border: `2px solid ${GOLD}`,
                     borderRadius: "50%",
                     display: "flex",
                     alignItems: "center",
@@ -1267,7 +1110,7 @@ function Contact() {
                     height="24"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="oklch(0.68 0.12 65)"
+                    stroke={GOLD}
                     strokeWidth="2"
                   >
                     <polyline points="20 6 9 17 4 12" />
@@ -1312,8 +1155,7 @@ function Contact() {
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       style={inputStyle}
                       onFocus={(e) =>
-                        ((e.target as HTMLElement).style.borderColor =
-                          "oklch(0.68 0.12 65)")
+                        ((e.target as HTMLElement).style.borderColor = GOLD)
                       }
                       onBlur={(e) =>
                         ((e.target as HTMLElement).style.borderColor =
@@ -1332,8 +1174,7 @@ function Contact() {
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       style={inputStyle}
                       onFocus={(e) =>
-                        ((e.target as HTMLElement).style.borderColor =
-                          "oklch(0.68 0.12 65)")
+                        ((e.target as HTMLElement).style.borderColor = GOLD)
                       }
                       onBlur={(e) =>
                         ((e.target as HTMLElement).style.borderColor =
@@ -1351,10 +1192,9 @@ function Contact() {
                     value={form.subject}
                     onChange={(e) => setForm({ ...form, subject: e.target.value })}
                     style={inputStyle}
-                    placeholder="e.g. Deal Submission — Miami Flex Industrial"
+                    placeholder="How can we help?"
                     onFocus={(e) =>
-                      ((e.target as HTMLElement).style.borderColor =
-                        "oklch(0.68 0.12 65)")
+                      ((e.target as HTMLElement).style.borderColor = GOLD)
                     }
                     onBlur={(e) =>
                       ((e.target as HTMLElement).style.borderColor =
@@ -1372,10 +1212,9 @@ function Contact() {
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     style={{ ...inputStyle, resize: "vertical" }}
-                    placeholder="Tell us about the property — location, size, asking price, and any relevant details."
+                    placeholder="Tell us about yourself and how we can work together."
                     onFocus={(e) =>
-                      ((e.target as HTMLElement).style.borderColor =
-                        "oklch(0.68 0.12 65)")
+                      ((e.target as HTMLElement).style.borderColor = GOLD)
                     }
                     onBlur={(e) =>
                       ((e.target as HTMLElement).style.borderColor =
@@ -1391,8 +1230,8 @@ function Contact() {
                     fontSize: "0.65rem",
                     letterSpacing: "0.18em",
                     textTransform: "uppercase",
-                    color: "oklch(0.18 0.04 245)",
-                    background: "oklch(0.68 0.12 65)",
+                    color: NAVY_DARK,
+                    background: GOLD,
                     padding: "1rem 2rem",
                     border: "none",
                     cursor: "pointer",
@@ -1400,12 +1239,10 @@ function Contact() {
                     alignSelf: "flex-start",
                   }}
                   onMouseEnter={(e) =>
-                    ((e.target as HTMLElement).style.background =
-                      "oklch(0.78 0.10 65)")
+                    ((e.target as HTMLElement).style.background = GOLD_HOVER)
                   }
                   onMouseLeave={(e) =>
-                    ((e.target as HTMLElement).style.background =
-                      "oklch(0.68 0.12 65)")
+                    ((e.target as HTMLElement).style.background = GOLD)
                   }
                 >
                   Send Message
@@ -1437,7 +1274,7 @@ function ContactDetail({
           fontSize: "0.6rem",
           letterSpacing: "0.15em",
           textTransform: "uppercase",
-          color: "oklch(0.68 0.12 65)",
+          color: GOLD,
           paddingTop: "0.15rem",
           minWidth: "80px",
         }}
@@ -1456,7 +1293,7 @@ function ContactDetail({
             transition: "color 0.2s",
           }}
           onMouseEnter={(e) =>
-            ((e.target as HTMLElement).style.color = "oklch(0.68 0.12 65)")
+            ((e.target as HTMLElement).style.color = GOLD)
           }
           onMouseLeave={(e) =>
             ((e.target as HTMLElement).style.color = "oklch(0.80 0.008 75)")
@@ -1485,40 +1322,25 @@ function Footer() {
   return (
     <footer
       style={{
-        background: "oklch(0.14 0.035 245)",
+        background: NAVY_DARK,
         borderTop: "1px solid oklch(1 0 0 / 8%)",
         padding: "3rem 0",
       }}
     >
       <div className="container">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Logo + name */}
+          {/* Logo */}
           <div className="flex items-center gap-3">
-            <GalashLogo size={32} />
-            <div>
-              <div
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  fontWeight: 600,
-                  fontSize: "0.8rem",
-                  letterSpacing: "0.15em",
-                  color: "oklch(0.95 0.005 75)",
-                }}
-              >
-                GALASH CAPITAL
-              </div>
-              <div
-                style={{
-                  fontFamily: "'Source Sans 3', sans-serif",
-                  fontWeight: 300,
-                  fontSize: "0.7rem",
-                  color: "oklch(0.50 0.01 75)",
-                  marginTop: "0.1rem",
-                }}
-              >
-                Small-Bay Industrial Investments
-              </div>
-            </div>
+            <img
+              src={LOGO_IMG}
+              alt="Galash Capital"
+              style={{
+                height: 36,
+                width: "auto",
+                filter: "brightness(0) invert(1)",
+                opacity: 0.8,
+              }}
+            />
           </div>
 
           {/* Nav links */}
@@ -1539,8 +1361,7 @@ function Footer() {
                     transition: "color 0.2s",
                   }}
                   onMouseEnter={(e) =>
-                    ((e.target as HTMLElement).style.color =
-                      "oklch(0.68 0.12 65)")
+                    ((e.target as HTMLElement).style.color = GOLD)
                   }
                   onMouseLeave={(e) =>
                     ((e.target as HTMLElement).style.color =
@@ -1573,10 +1394,9 @@ function Footer() {
 // ─── Main Page ────────────────────────────────────────────────────────────────
 export default function Home() {
   return (
-    <div className="min-h-screen" style={{ background: "oklch(0.18 0.04 245)" }}>
+    <div className="min-h-screen" style={{ background: NAVY }}>
       <Nav />
       <Hero />
-      <StatsBar />
       <About />
       <WhySmallBay />
       <Capabilities />
