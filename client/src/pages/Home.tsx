@@ -211,19 +211,6 @@ function Hero() {
           transform: loaded ? "translateY(0)" : "translateY(20px)",
           transition: "opacity 1s ease 0.3s, transform 1s ease 0.3s",
         }}>
-          {/* Label */}
-          <div style={{
-            fontFamily: "'Montserrat', sans-serif",
-            fontWeight: 600,
-            fontSize: "0.65rem",
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-            color: GOLD,
-            marginBottom: "1.5rem",
-          }}>
-            Industrial Real Estate Investment
-          </div>
-
           {/* Main headline — pure white for maximum contrast */}
           <h1 style={{
             fontFamily: "'Cormorant Garamond', serif",
@@ -260,27 +247,7 @@ function Hero() {
             properties across Florida and Sun Belt States.
           </p>
 
-          {/* Single ghost CTA */}
-          <a
-            href="#about"
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontWeight: 600,
-              fontSize: "0.65rem",
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: WHITE,
-              border: `1px solid rgba(255,255,255,0.45)`,
-              padding: "0.9rem 2.2rem",
-              textDecoration: "none",
-              display: "inline-block",
-              transition: "border-color 0.2s, color 0.2s",
-            }}
-            onMouseEnter={(e) => { (e.target as HTMLElement).style.borderColor = GOLD; (e.target as HTMLElement).style.color = GOLD; }}
-            onMouseLeave={(e) => { (e.target as HTMLElement).style.borderColor = "rgba(255,255,255,0.45)"; (e.target as HTMLElement).style.color = WHITE; }}
-          >
-            Learn More
-          </a>
+
         </div>
       </div>
 
@@ -474,23 +441,23 @@ function Capabilities() {
     {
       icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>,
       title: "Acquisitions",
-      body: "Disciplined sourcing and underwriting of small-bay industrial assets in high-demand locations. We evaluate deals across Florida and the broader Sun Belt with speed and conviction.",
+      body: "Disciplined sourcing and underwriting of small-bay industrial assets in high-demand locations across Florida and the Sun Belt.",
     },
     {
       // Tower crane icon — distinct from the house/acquisitions icon
       icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="12" y1="2" x2="12" y2="22" /><line x1="12" y1="4" x2="22" y2="8" /><line x1="12" y1="4" x2="4" y2="7" /><line x1="22" y1="8" x2="22" y2="14" /><rect x="19" y="14" width="6" height="4" rx="0.5" /><line x1="12" y1="6" x2="18" y2="8.5" /><line x1="12" y1="22" x2="8" y2="22" /><line x1="12" y1="22" x2="16" y2="22" /></svg>,
       title: "Development",
-      body: "Selectively pursuing ground-up development opportunities where land cost, zoning, and market fundamentals support new construction of industrial product. We underwrite development with the same discipline applied to acquisitions.",
+      body: "Ground-up development where land cost, zoning, and market fundamentals support new industrial construction. Same underwriting discipline as acquisitions.",
     },
     {
       icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="2" y="7" width="20" height="14" rx="1" /><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" /><line x1="12" y1="12" x2="12" y2="16" /><line x1="10" y1="14" x2="14" y2="14" /></svg>,
       title: "Asset Management",
-      body: "Hands-on oversight focused on leasing, tenant retention, and operational performance. We manage assets with the same rigor we apply to underwriting.",
+      body: "Hands-on oversight of leasing, tenant retention, and operational performance. We manage assets with the same rigor applied to underwriting.",
     },
     {
       icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="12" y1="20" x2="12" y2="10" /><line x1="18" y1="20" x2="18" y2="4" /><line x1="6" y1="20" x2="6" y2="16" /></svg>,
       title: "Value Creation",
-      body: "Executing strategies that unlock value through improvements, repositioning, and active management. We target assets with mark-to-market rent potential and expansion upside.",
+      body: "Unlocking value through improvements, repositioning, and active management. We target assets with mark-to-market rent potential and expansion upside.",
     },
   ];
 
