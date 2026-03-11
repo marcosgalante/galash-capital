@@ -317,7 +317,7 @@ function About() {
               color: NAVY,
               marginBottom: "1.5rem",
             }}>
-              Technology-Driven{" "}
+              Data-Driven{" "}
               <span style={{ fontStyle: "italic", color: GOLD }}>Industrial Real Estate</span>{" "}
               Investing
             </h2>
@@ -469,6 +469,7 @@ function WhySmallBay() {
 
 // ─── Capabilities Section ─────────────────────────────────────────────────────
 function Capabilities() {
+  // Order: TL=Acquisitions, TR=Development, BL=Asset Management, BR=Value Creation
   const caps = [
     {
       icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>,
@@ -476,7 +477,13 @@ function Capabilities() {
       body: "Disciplined sourcing and underwriting of small-bay industrial assets in high-demand locations. We evaluate deals across Florida and the broader Sun Belt with speed and conviction.",
     },
     {
-      icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>,
+      // Hard-hat / construction crane icon
+      icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M2 20h20" /><path d="M6 20V10l6-6 6 6v10" /><path d="M9 20v-6h6v6" /><path d="M12 4v3" /><path d="M4 10h16" /></svg>,
+      title: "Development",
+      body: "Selectively pursuing ground-up development opportunities where land cost, zoning, and market fundamentals support new construction of industrial product. We underwrite development with the same discipline applied to acquisitions.",
+    },
+    {
+      icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="2" y="7" width="20" height="14" rx="1" /><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" /><line x1="12" y1="12" x2="12" y2="16" /><line x1="10" y1="14" x2="14" y2="14" /></svg>,
       title: "Asset Management",
       body: "Hands-on oversight focused on leasing, tenant retention, and operational performance. We manage assets with the same rigor we apply to underwriting.",
     },
@@ -484,11 +491,6 @@ function Capabilities() {
       icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="12" y1="20" x2="12" y2="10" /><line x1="18" y1="20" x2="18" y2="4" /><line x1="6" y1="20" x2="6" y2="16" /></svg>,
       title: "Value Creation",
       body: "Executing strategies that unlock value through improvements, repositioning, and active management. We target assets with mark-to-market rent potential and expansion upside.",
-    },
-    {
-      icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="11" width="18" height="11" rx="1" /><path d="M7 11V7a5 5 0 0 1 9.9-1" /><line x1="3" y1="22" x2="21" y2="22" /><line x1="8" y1="11" x2="8" y2="22" /><line x1="16" y1="11" x2="16" y2="22" /></svg>,
-      title: "Development",
-      body: "Selectively pursuing ground-up development opportunities where land cost, zoning, and market fundamentals support new construction of industrial product. We underwrite development with the same discipline applied to acquisitions.",
     },
   ];
 
@@ -721,7 +723,7 @@ function Contact() {
             {/* Contact details */}
             <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
               <ContactDetail label="Email" value="marcos@galashcapital.com" href="mailto:marcos@galashcapital.com" />
-              <ContactDetail label="Phone" value="+1 (754) 777-7959" href="tel:+17547777959" />
+              <ContactDetail label="Phone" value="(305) 965-1454" href="tel:+13059651454" />
               <ContactDetail label="Address" value="3121 W. Hallandale Beach Blvd #103, Hallandale, FL 33009" />
             </div>
           </Reveal>
@@ -817,19 +819,26 @@ function ContactDetail({ label, value, href }: { label: string; value: string; h
 function Footer() {
   return (
     <footer style={{ background: NAVY, borderTop: `1px solid rgba(255,255,255,0.08)` }}>
-      {/* Upper footer — logo + nav */}
+      {/* Upper footer — logo + nav + address */}
       <div className="container" style={{ padding: "3.5rem 0 2.5rem" }}>
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* White logo — prominent in footer */}
+        <div className="flex flex-col md:flex-row items-start justify-between gap-10">
+
+          {/* LEFT: White logo */}
           <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
             <img
-              src={LOGO_WHITE}
+              src={LOGO_NAVY}
               alt="Galash Capital"
-              style={{ height: 52, width: "auto", filter: "brightness(0) invert(1)", opacity: 0.90 }}
+              style={{
+                height: 56,
+                width: "auto",
+                display: "block",
+                filter: "brightness(0) invert(1)",
+                opacity: 0.92,
+              }}
             />
           </a>
 
-          {/* Nav links */}
+          {/* CENTER: Nav links */}
           <div className="flex flex-wrap justify-center gap-8">
             {["About", "Strategy", "Capabilities", "Team", "Contact"].map((item) => (
               <a
@@ -844,16 +853,28 @@ function Footer() {
             ))}
           </div>
 
-          {/* Contact shortcut */}
-          <div style={{ textAlign: "right", flexShrink: 0 }}>
-            <a href="mailto:marcos@galashcapital.com" style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: 400, fontSize: "0.85rem", color: GREY_LIGHT, textDecoration: "none", display: "block", marginBottom: "0.25rem", transition: "color 0.2s" }}
-              onMouseEnter={(e) => ((e.target as HTMLElement).style.color = GOLD)}
-              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = GREY_LIGHT)}
-            >marcos@galashcapital.com</a>
-            <a href="tel:+17547777959" style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: 400, fontSize: "0.85rem", color: GREY_MID, textDecoration: "none", transition: "color 0.2s" }}
-              onMouseEnter={(e) => ((e.target as HTMLElement).style.color = GOLD)}
-              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = GREY_MID)}
-            >+1 (754) 777-7959</a>
+          {/* RIGHT: Address + LinkedIn */}
+          <div style={{ flexShrink: 0, textAlign: "right" }}>
+            <div style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: 300, fontSize: "0.82rem", color: GREY_LIGHT, lineHeight: 1.7, marginBottom: "0.85rem" }}>
+              3121 W. Hallandale Beach Blvd #103<br />
+              Hallandale, FL 33009
+            </div>
+            {/* LinkedIn icon linking to Marcos */}
+            <a
+              href="https://www.linkedin.com/in/marcosgalante/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", color: GREY_MID, textDecoration: "none", transition: "color 0.2s" }}
+              onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.color = GOLD; }}
+              onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.color = GREY_MID; }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+              <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.6rem", letterSpacing: "0.12em", textTransform: "uppercase" }}>LinkedIn</span>
+            </a>
           </div>
         </div>
       </div>
@@ -868,7 +889,7 @@ function Footer() {
             © {new Date().getFullYear()} Galash Capital. All rights reserved.
           </div>
           <div style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: 300, fontSize: "0.72rem", color: GREY_MID, opacity: 0.65 }}>
-            Hallandale Beach, FL
+            Industrial Real Estate Investment
           </div>
         </div>
       </div>
