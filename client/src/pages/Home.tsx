@@ -796,7 +796,7 @@ function Footer() {
               src={LOGO_WHITE}
               alt="Galash Capital"
               style={{
-              height: 90,
+              height: 58,
               width: "auto",
               display: "block",
             }}
