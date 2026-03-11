@@ -476,11 +476,6 @@ function Capabilities() {
       body: "Disciplined sourcing and underwriting of small-bay industrial assets in high-demand locations. We evaluate deals across Florida and the broader Sun Belt with speed and conviction.",
     },
     {
-      icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>,
-      title: "Research & Technology",
-      body: "Data-driven insights powered by proprietary algorithms and market analysis. Our technology stack enables us to identify opportunities before they reach the open market.",
-    },
-    {
       icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>,
       title: "Asset Management",
       body: "Hands-on oversight focused on leasing, tenant retention, and operational performance. We manage assets with the same rigor we apply to underwriting.",
@@ -491,7 +486,7 @@ function Capabilities() {
       body: "Executing strategies that unlock value through improvements, repositioning, and active management. We target assets with mark-to-market rent potential and expansion upside.",
     },
     {
-      icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polygon points="2 20 22 20 12 4 2 20" /><line x1="12" y1="10" x2="12" y2="15" /><line x1="12" y1="17" x2="12" y2="19" /></svg>,
+      icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="11" width="18" height="11" rx="1" /><path d="M7 11V7a5 5 0 0 1 9.9-1" /><line x1="3" y1="22" x2="21" y2="22" /><line x1="8" y1="11" x2="8" y2="22" /><line x1="16" y1="11" x2="16" y2="22" /></svg>,
       title: "Development",
       body: "Selectively pursuing ground-up development opportunities where land cost, zoning, and market fundamentals support new construction of industrial product. We underwrite development with the same discipline applied to acquisitions.",
     },
@@ -821,25 +816,26 @@ function ContactDetail({ label, value, href }: { label: string; value: string; h
 // ─── Footer ───────────────────────────────────────────────────────────────────
 function Footer() {
   return (
-    <footer style={{ background: NAVY, borderTop: `1px solid rgba(255,255,255,0.08)`, padding: "3rem 0" }}>
-      <div className="container">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* White logo in footer */}
-          <div className="flex items-center gap-3">
+    <footer style={{ background: NAVY, borderTop: `1px solid rgba(255,255,255,0.08)` }}>
+      {/* Upper footer — logo + nav */}
+      <div className="container" style={{ padding: "3.5rem 0 2.5rem" }}>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          {/* White logo — prominent in footer */}
+          <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
             <img
               src={LOGO_WHITE}
               alt="Galash Capital"
-              style={{ height: 44, width: "auto", filter: "brightness(0) invert(1)", opacity: 0.85 }}
+              style={{ height: 52, width: "auto", filter: "brightness(0) invert(1)", opacity: 0.90 }}
             />
-          </div>
+          </a>
 
           {/* Nav links */}
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-8">
             {["About", "Strategy", "Capabilities", "Team", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, fontSize: "0.62rem", letterSpacing: "0.12em", textTransform: "uppercase", color: GREY_MID, textDecoration: "none", transition: "color 0.2s" }}
+                style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: GREY_MID, textDecoration: "none", transition: "color 0.2s" }}
                 onMouseEnter={(e) => ((e.target as HTMLElement).style.color = GOLD)}
                 onMouseLeave={(e) => ((e.target as HTMLElement).style.color = GREY_MID)}
               >
@@ -848,9 +844,31 @@ function Footer() {
             ))}
           </div>
 
-          {/* Copyright */}
-          <div style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: 300, fontSize: "0.75rem", color: GREY_MID, opacity: 0.7 }}>
+          {/* Contact shortcut */}
+          <div style={{ textAlign: "right", flexShrink: 0 }}>
+            <a href="mailto:marcos@galashcapital.com" style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: 400, fontSize: "0.85rem", color: GREY_LIGHT, textDecoration: "none", display: "block", marginBottom: "0.25rem", transition: "color 0.2s" }}
+              onMouseEnter={(e) => ((e.target as HTMLElement).style.color = GOLD)}
+              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = GREY_LIGHT)}
+            >marcos@galashcapital.com</a>
+            <a href="tel:+17547777959" style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: 400, fontSize: "0.85rem", color: GREY_MID, textDecoration: "none", transition: "color 0.2s" }}
+              onMouseEnter={(e) => ((e.target as HTMLElement).style.color = GOLD)}
+              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = GREY_MID)}
+            >+1 (754) 777-7959</a>
+          </div>
+        </div>
+      </div>
+
+      {/* Gold divider */}
+      <div style={{ borderTop: `1px solid rgba(201,151,59,0.20)` }} />
+
+      {/* Lower footer — copyright */}
+      <div className="container" style={{ padding: "1.25rem 0" }}>
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: 300, fontSize: "0.72rem", color: GREY_MID, opacity: 0.65 }}>
             © {new Date().getFullYear()} Galash Capital. All rights reserved.
+          </div>
+          <div style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: 300, fontSize: "0.72rem", color: GREY_MID, opacity: 0.65 }}>
+            Hallandale Beach, FL
           </div>
         </div>
       </div>
