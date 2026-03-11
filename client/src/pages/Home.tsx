@@ -19,7 +19,7 @@ const LOGO_NAVY =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_logo_navy_23216c75.png";
 // Navy-background logo with white text — used directly in dark footer (no filter needed)
 const LOGO_WHITE =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_logo_navy_bg_dd8ddf4d.png";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_logo_footer2_687947bd.png";
 
 // Team photos
 const PHOTO_JOSEPH = "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/team_joseph_d39d689f.png";
@@ -787,7 +787,7 @@ function Footer() {
   return (
     <footer style={{ background: NAVY, borderTop: `1px solid rgba(255,255,255,0.08)` }}>
       {/* Upper footer — logo + nav + LinkedIn */}
-      <div className="container" style={{ padding: "3rem 0 2.5rem" }}>
+      <div className="container" style={{ padding: "3rem 0 2.5rem", paddingLeft: undefined, paddingRight: undefined }}>
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
 
           {/* LEFT: Navy-bg logo — renders directly on dark footer, no filter needed */}
