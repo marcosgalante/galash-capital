@@ -19,7 +19,7 @@ const LOGO_NAVY =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_logo_navy_23216c75.png";
 // Navy-background logo with white text — used directly in dark footer (no filter needed)
 const LOGO_WHITE =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_logo_footer2_687947bd.png";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_logo_footer3_de12a6e2.png";
 
 // Team photos
 const PHOTO_JOSEPH = "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/team_joseph_d39d689f.png";
