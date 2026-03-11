@@ -17,9 +17,14 @@ import { useEffect, useRef, useState } from "react";
 // Dark navy logo — used on white/light nav background
 const LOGO_NAVY =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_logo_navy_23216c75.png";
-// White logo — used in dark footer
+// White logo — used in dark footer (inverted via CSS filter)
 const LOGO_WHITE =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_logo_navy_23216c75.png";
+
+// Team photos
+const PHOTO_JOSEPH = "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/team_joseph_d39d689f.png";
+const PHOTO_ALBERTO = "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/team_alberto_4f81d49e.png";
+const PHOTO_MARCOS = "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/team_marcos_ee5dd43f.png";
 
 const HERO_IMG =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_hero_aerial-NVsCuaraMQKfcoYLND5rcR.webp";
@@ -94,20 +99,20 @@ function Nav() {
     <nav
       className="fixed top-0 left-0 right-0 z-50"
       style={{
-        background: scrolled ? `${OFF_WHITE}f8` : OFF_WHITE,
+        background: WHITE,
         backdropFilter: "blur(8px)",
         borderBottom: `1px solid ${GREY_LIGHT}`,
-        boxShadow: scrolled ? "0 2px 16px rgba(26,43,74,0.10)" : "none",
+        boxShadow: scrolled ? "0 2px 16px rgba(26,43,74,0.10)" : "0 1px 0 rgba(26,43,74,0.06)",
         transition: "box-shadow 0.3s",
       }}
     >
-      <div className="container flex items-center justify-between" style={{ height: 72 }}>
+      <div className="container flex items-center justify-between" style={{ height: 80 }}>
         {/* Dark navy logo on white nav */}
         <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
           <img
             src={LOGO_NAVY}
             alt="Galash Capital"
-            style={{ height: 48, width: "auto", display: "block" }}
+            style={{ height: 58, width: "auto", display: "block" }}
           />
         </a>
 
@@ -150,7 +155,7 @@ function Nav() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div style={{ background: OFF_WHITE, borderTop: `1px solid ${GREY_LIGHT}`, padding: "1.5rem" }}>
+        <div style={{ background: WHITE, borderTop: `1px solid ${GREY_LIGHT}`, padding: "1.5rem" }}>
           {links.map((link) => (
             <a
               key={link.href}
@@ -193,9 +198,9 @@ function Hero() {
         backgroundRepeat: "no-repeat",
       }} />
 
-      {/* Very dark overlay — ensures white text is always legible */}
+      {/* Dark overlay — balanced for visibility + readability */}
       <div className="absolute inset-0" style={{
-        background: `linear-gradient(135deg, rgba(26,43,74,0.92) 0%, rgba(26,43,74,0.82) 60%, rgba(26,43,74,0.70) 100%)`,
+        background: `linear-gradient(135deg, rgba(26,43,74,0.80) 0%, rgba(26,43,74,0.68) 55%, rgba(26,43,74,0.52) 100%)`,
       }} />
 
       {/* Content */}
@@ -231,7 +236,7 @@ function Hero() {
           }}>
             Galash
             <br />
-            <span style={{ fontStyle: "italic", color: GOLD }}>Small-Bay Industrial</span>
+            <span style={{ fontStyle: "italic", color: GOLD }}>Industrial</span>
             <br />
             Investments
           </h1>
@@ -485,6 +490,11 @@ function Capabilities() {
       title: "Value Creation",
       body: "Executing strategies that unlock value through improvements, repositioning, and active management. We target assets with mark-to-market rent potential and expansion upside.",
     },
+    {
+      icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polygon points="2 20 22 20 12 4 2 20" /><line x1="12" y1="10" x2="12" y2="15" /><line x1="12" y1="17" x2="12" y2="19" /></svg>,
+      title: "Development",
+      body: "Selectively pursuing ground-up development opportunities where land cost, zoning, and market fundamentals support new construction of industrial product. We underwrite development with the same discipline applied to acquisitions.",
+    },
   ];
 
   return (
@@ -546,34 +556,39 @@ function Capabilities() {
 
 // ─── Team Section ─────────────────────────────────────────────────────────────
 function Team() {
+  // Order: Joseph top-left, Alberto top-right, Mayer bottom-left, Marcos bottom-right
   const members = [
-    {
-      name: "Alberto Galante",
-      title: "Principal",
-      bio: "Alberto brings extensive experience in real estate investment and capital markets. He leads Galash Capital's overall strategy, investor relations, and platform development, drawing on a career spanning acquisitions, asset management, and portfolio construction across multiple asset classes.",
-      linkedin: "https://www.linkedin.com/in/alberto-galante-70621238/",
-      initials: "AG",
-    },
-    {
-      name: "Marcos Galante",
-      title: "Director of Acquisitions",
-      bio: "Marcos oversees deal sourcing, underwriting, and transaction execution at Galash Capital. With deep roots in South Florida's industrial market and a data-driven approach to opportunity identification, he leads the firm's acquisition pipeline from initial screening through closing.",
-      linkedin: "https://www.linkedin.com/in/marcosgalante/",
-      initials: "MG",
-    },
     {
       name: "Joseph Ashkenazi",
       title: "Principal",
       bio: "Joseph is a co-founder and Principal of Galash Capital, contributing expertise in real estate investment strategy, capital structuring, and operational oversight. He plays a central role in shaping the firm's investment thesis and building its institutional-grade platform.",
       linkedin: "https://www.linkedin.com/in/joseph-ashkenazi-07a27694/",
+      photo: PHOTO_JOSEPH,
       initials: "JA",
+    },
+    {
+      name: "Alberto Galante",
+      title: "Principal",
+      bio: "Alberto brings extensive experience in real estate investment and capital markets. He leads Galash Capital's overall strategy, investor relations, and platform development, drawing on a career spanning acquisitions, asset management, and portfolio construction across multiple asset classes.",
+      linkedin: "https://www.linkedin.com/in/alberto-galante-70621238/",
+      photo: PHOTO_ALBERTO,
+      initials: "AG",
     },
     {
       name: "Mayer Ashkenazi",
       title: "Director of Investor Relations",
       bio: "Mayer leads investor communications, capital raising, and relationship management at Galash Capital. He brings a background in financial services and a commitment to transparency, ensuring investors receive clear, timely reporting and a best-in-class experience throughout the investment lifecycle.",
       linkedin: "https://www.linkedin.com/in/mayer-ashkenazi-077579121/",
+      photo: null,
       initials: "MA",
+    },
+    {
+      name: "Marcos Galante",
+      title: "Director of Acquisitions",
+      bio: "Marcos oversees deal sourcing, underwriting, and transaction execution at Galash Capital. With deep roots in South Florida's industrial market and a data-driven approach to opportunity identification, he leads the firm's acquisition pipeline from initial screening through closing.",
+      linkedin: "https://www.linkedin.com/in/marcosgalante/",
+      photo: PHOTO_MARCOS,
+      initials: "MG",
     },
   ];
 
@@ -606,9 +621,15 @@ function Team() {
                 onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.borderColor = `${GOLD}55`; el.style.background = NAVY_MID; }}
                 onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "rgba(255,255,255,0.07)"; el.style.background = NAVY_CARD; }}
               >
-                {/* Avatar */}
-                <div style={{ width: 52, height: 52, background: `${GOLD}22`, border: `1px solid ${GOLD}55`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.05rem", color: GOLD }}>{m.initials}</span>
+                {/* Avatar — photo if available, else initials placeholder */}
+                <div style={{ width: 72, height: 72, flexShrink: 0, overflow: "hidden", border: `1px solid ${GOLD}44` }}>
+                  {m.photo ? (
+                    <img src={m.photo} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
+                  ) : (
+                    <div style={{ width: "100%", height: "100%", background: `${GOLD}18`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.2rem", color: GOLD }}>{m.initials}</span>
+                    </div>
+                  )}
                 </div>
 
                 <div style={{ flex: 1 }}>
@@ -808,7 +829,7 @@ function Footer() {
             <img
               src={LOGO_WHITE}
               alt="Galash Capital"
-              style={{ height: 36, width: "auto", filter: "brightness(0) invert(1)", opacity: 0.85 }}
+              style={{ height: 44, width: "auto", filter: "brightness(0) invert(1)", opacity: 0.85 }}
             />
           </div>
 
