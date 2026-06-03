@@ -520,16 +520,8 @@ function Capabilities() {
 
 // ─── Team Section ─────────────────────────────────────────────────────────────
 function Team() {
-  // Order: Joseph top-left, Alberto top-right, Mayer bottom-left, Marcos bottom-right
+  // Order: Alberto left, Marcos right
   const members = [
-    {
-      name: "Joseph Ashkenazi",
-      title: "Principal",
-      bio: "Joseph is a co-founder and Principal of Galash Capital, contributing expertise in real estate investment strategy, capital structuring, and operational oversight. He plays a central role in shaping the firm's investment thesis and building its institutional-grade platform.",
-      linkedin: "https://www.linkedin.com/in/joseph-ashkenazi-07a27694/",
-      photo: PHOTO_JOSEPH,
-      initials: "JA",
-    },
     {
       name: "Alberto Galante",
       title: "Principal",
@@ -539,16 +531,8 @@ function Team() {
       initials: "AG",
     },
     {
-      name: "Mayer Ashkenazi",
-      title: "Director of Investor Relations",
-      bio: "Mayer leads investor communications, capital raising, and relationship management at Galash Capital. He brings a background in financial services and a commitment to transparency, ensuring investors receive clear, timely reporting and a best-in-class experience throughout the investment lifecycle.",
-      linkedin: "https://www.linkedin.com/in/mayer-ashkenazi-077579121/",
-      photo: null,
-      initials: "MA",
-    },
-    {
       name: "Marcos Galante",
-      title: "Director of Acquisitions",
+      title: "Principal",
       bio: "Marcos oversees deal sourcing, underwriting, and transaction execution at Galash Capital. With deep roots in South Florida's industrial market and a data-driven approach to opportunity identification, he leads the firm's acquisition pipeline from initial screening through closing.",
       linkedin: "https://www.linkedin.com/in/marcosgalante/",
       photo: PHOTO_MARCOS,
