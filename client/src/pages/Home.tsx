@@ -15,23 +15,18 @@ import { useEffect, useRef, useState } from "react";
 
 // ─── Image Assets ────────────────────────────────────────────────────────────
 // Dark navy logo — used on white/light nav background
-const LOGO_NAVY =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_logo_navy_23216c75.png";
+const LOGO_NAVY = "/images/logo-navy.png";
 // Navy-background logo with white text — used directly in dark footer (no filter needed)
-const LOGO_WHITE =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_logo_footer4_93c3bf80.png";
+const LOGO_WHITE = "/images/logo-white.png";
 
 // Team photos
-const PHOTO_JOSEPH = "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/team_joseph_d39d689f.png";
-const PHOTO_ALBERTO = "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/team_alberto_4f81d49e.png";
-const PHOTO_MARCOS = "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/team_marcos_ee5dd43f.png";
+const PHOTO_JOSEPH = ""; // TODO: add /images/team-joseph.png
+const PHOTO_ALBERTO = "/images/team-alberto.jpg";
+const PHOTO_MARCOS = "/images/team-marcos.jpg";
 
-const HERO_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_hero_aerial-NVsCuaraMQKfcoYLND5rcR.webp";
-const WAREHOUSE_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_warehouse_interior-2eTduYmGNVTRpbeM2E9HMv.webp";
-const SKYLINE_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663426917592/VvzoS3oAhYEAPu2Zui9gx4/galash_skyline_industrial-NgisGRVGqJ8YCVUWNnM6Ww.webp";
+const HERO_IMG = "/images/hero-aerial.webp";
+const WAREHOUSE_IMG = "/images/warehouse-interior.webp";
+const SKYLINE_IMG = "/images/skyline-industrial.webp";
 
 // ─── Brand Color Tokens ───────────────────────────────────────────────────────
 // Exact brand palette from style guide
